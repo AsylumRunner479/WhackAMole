@@ -6,7 +6,7 @@ public class MoleManager : MonoBehaviour
 {
     public GameObject[] holes;
     public GameObject mole;
-    private float Spawn;
+    private float Spawn, Speedup;
     private int rando;
     // Start is called before the first frame update
     void Start()
@@ -18,11 +18,14 @@ public class MoleManager : MonoBehaviour
     void Update()
     {
         
-        Spawn += Time.deltaTime;
+        Spawn += Speedup*Time.deltaTime;
+        Speedup += Time.deltaTime / 10;
+
         if (Spawn >= 0)
         {
             rando = Random.Range(0, holes.Length - 1);
             Instantiate(mole, holes[rando].transform.position, Quaternion.identity);
+            Health.health -= 1;
             Spawn = -1;
         }
     }

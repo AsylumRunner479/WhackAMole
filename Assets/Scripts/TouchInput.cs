@@ -28,6 +28,7 @@ public class TouchInput : MonoBehaviour
             {
                 if (hit.collider.gameObject == self)
                 {
+                    Health.health += 1;
                     Destroy(self);
                 }
 
