@@ -18,8 +18,11 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        healthBar.value = health;
+        if (healthBar.value != health)
+        {
+            healthBar.value = health;
+        }
+        
         if (health <= 0 )
         {
             canvas.SetActive(true);

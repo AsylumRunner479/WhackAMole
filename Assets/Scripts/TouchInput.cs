@@ -16,7 +16,10 @@ public class TouchInput : MonoBehaviour
         InputCamera = Camera.main;
         
     }
-
+    private void Awake()
+    {
+        InputCamera = Camera.main;
+    }
     // Update is called once per frame
     void Update()
     {
