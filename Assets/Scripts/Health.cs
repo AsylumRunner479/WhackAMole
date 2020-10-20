@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
-    public static float health;
+    public static float health, score, highscore;
     public GameObject canvas;
     public Slider healthBar;
+    public Text scoretext, highscoretext;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +22,18 @@ public class Health : MonoBehaviour
         if (healthBar.value != health)
         {
             healthBar.value = health;
+           
         }
-        
+        if (score >= highscore)
+        {
+            highscore = score;
+        }
         if (health <= 0 )
         {
             canvas.SetActive(true);
             Time.timeScale = 0;
-            
+            scoretext.text = "Score: " + score;
+            highscoretext.text = "HighScore: " + highscore;
         }
         else
         {
@@ -37,6 +43,7 @@ public class Health : MonoBehaviour
     }
     public void Restart()
     {
+        score = 0;
         SceneManager.LoadScene(0);
     }
 }
